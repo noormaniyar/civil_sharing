@@ -1,0 +1,34 @@
+{% extends 'patient/header.html' %}
+{% load static %}
+
+
+
+{% block title%}Login{% endblock title %}
+{% block header %}
+
+{% load crispy_forms_tags %}
+
+<div class="container my-5">
+
+    <section class="text-center dark-grey-text mb-5">
+        <div class="card">
+            <div class="card-body rounded-top border-top p-5">
+                <h3 class="font-weight-bold my-4">Log In</h3>
+                <form class="mb-4 mx-md-5" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-md">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+
+
+
+{% endblock %}

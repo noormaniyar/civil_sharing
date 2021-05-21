@@ -1,0 +1,31 @@
+{% extends 'patient/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title%}Create New Bed{% endblock title %}
+{% block content %}
+
+
+<div class="container my-5">
+    <section class="dark-grey-text mb-5">
+        <div class="card">
+            <div class="card-body text-left rounded-top border-top p-5">
+                <h3 class="font-weight-bold text-center my-4">Creating the Bed for patient</h3>
+                <form class="mb-4 mx-md-5" method="post" action="{% url 'patient:creating_bed' %}">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+
+                    <br>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-md">Create Bed</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+{% endblock %}
+
+

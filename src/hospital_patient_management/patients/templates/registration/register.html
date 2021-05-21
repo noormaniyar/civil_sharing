@@ -1,0 +1,36 @@
+{% extends 'patient/header.html' %}
+{% load static %}
+
+
+
+
+{% block title%}Register{% endblock title %}
+{% block header %}
+{% load crispy_forms_tags %}
+
+
+<div class="container my-5">
+
+    <section class="dark-grey-text mb-5">
+        <div class="card">
+            <div class="card-body rounded-top border-top p-5 m-auto">
+                <h3 class="font-weight-bold my-4 text-center">Register</h3>
+                {% if messages %}
+                  {% for message in messages %}
+                    <p class="text-center fw-bold">Successfully {{ message }}!!!</p>
+                  {% endfor %}
+                {% endif %}
+                <form class="mb-4 mx-md-5" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-md">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+{% endblock %}

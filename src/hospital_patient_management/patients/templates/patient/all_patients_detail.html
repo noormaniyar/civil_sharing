@@ -1,0 +1,62 @@
+{% extends 'patient/base.html' %}
+{% load static %}
+
+{% block title%}All Patients Detail{% endblock title %}
+{% block content %}
+
+<div class="container-fluid my-5 text-center">
+    <h3 class="font-weight-bold my-4">All Patients Detail </h3>
+{% if all_patient %}
+    <section class="d-flex m-auto">
+            <table class="table table-bordered table-hover">
+                <thead class="text-white text-center" style="background-color: gray;">
+                    <tr>
+                        <th scope="col">Patient Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Treatment</th>
+                        <th scope="col">Bed Name</th>
+                        <th scope="col">Hospitalized On</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Bill Amount</th>
+                        <th scope="col">Extra info</th>
+                        <th scope="col">Paid Amount</th>
+                        <th scope="col">Balance Amount</th>
+                        <th scope="col">Discharged On</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                {% for patient in all_patient %}
+                    <tbody class="text-center">
+                        <tr>
+                            <th scope="row">{{ patient.id }}</th>
+                            <td>{{ patient.full_name }}</td>
+                            <td>{{ patient.treatment }}</td>
+                            <td>{{ patient.bed }}</td>
+                            <td class="small">{{ patient.hospitalized_on }}</td>
+                            <td>
+                                {% if patient.is_discharge %}
+                                    <p class="text-danger small">Discharged</p>
+                                {% else %}
+                                    <P class="text-success small">Active</P>
+                                {% endif %}
+                            <td>{{ patient.bill }}</td>
+                            <td class="small">{{ patient.extra_info }}</td>
+                            <td>to be done</td>
+                            <td>to be done</td>
+                            <td class="small">{{ patient.discharged_on }}</td>
+                            <td class="text-center">
+                                <a href="/patient_detail/{{ patient.id }}/" class="text-info">View</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+    </section>
+{% endif %}
+</div>
+
+
+
+{% endblock %}
+
+

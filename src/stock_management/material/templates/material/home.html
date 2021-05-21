@@ -1,0 +1,36 @@
+{% extends 'material/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <h1>This is stock management system.</h1>
+
+    <div>
+        <br>
+        <a href="{% url "materials:inward" %}" ><button>Create Inward</button></a>
+        <a href="{% url "materials:outward" %}" ><button>Create Outward</button></a>
+    </div>
+
+    <div class="" style="">
+        {% if material_list %}
+            <ul style="list-style: none;">
+            {% for mat in material_list %}
+                <li style="padding: 10px; margin: 5px; border: 1px solid green; width: 230px; text-align: center;">
+                    <a href="/material/{{ mat.id }}/" style="font-size: 30px; text-decoration: none;">
+                        {{ mat.name }}
+                    </a>
+                    <h4 style="">{{ mat.current_weight }} kg</h4>
+                    <hr/>
+                    <h6 style="padding: 0px; margin: 0px;">Created on</h6>
+                    <h5 style="padding: 0px;">{{ mat.created_on }}</h5>
+                </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+
+
+
+{% endblock %}
+

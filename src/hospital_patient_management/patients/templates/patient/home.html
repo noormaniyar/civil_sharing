@@ -1,0 +1,64 @@
+{% extends 'patient/base.html' %}
+{% load static %}
+
+{% block title%}Hospital Management{% endblock title %}
+{% block content %}
+<h3 class="font-weight-bold my-4 text-center">Active Patient List</h3>
+<div class="container-fluid">
+
+
+{% if user.is_authenticated %}
+    <div class="d-flex text-center">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body" style="border: 2px solid green;">
+                    <h5 class="card-title text-info">Patients ({{ patient_list.count }})</h5>
+                    <a type="submit" href="{% url 'patient:all_patients_detail' %}" class="">View More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body" style="border: 2px solid green;">
+                    <h5 class="card-title text-info">Beds ({{ empty_beds.count }} Empty out of {{ bed_list.count }})</h5>
+                    <a type="submit" href="{% url 'patient:bed_list' %}" class="">View More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if patient_list %}
+        <section class="d-flex">
+                <table class="table table-bordered table-hover">
+                    <thead class="text-white lead text-center" style="background-color: gray;">
+                        <tr>
+                            <th scope="col">Patient Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Treatment</th>
+                            <th scope="col">Bed Name</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    {% for patient in patient_list %}
+                        <tbody class="text-center">
+                            <tr>
+                                <th scope="row">{{ patient.id }}</th>
+                                <td>{{ patient.full_name }}</td>
+                                <td>{{ patient.treatment }}</td>
+                                <td>{{ patient.bed }}</td>
+                                <td class="text-center">
+                                    <button type="submit" class="btn btn-info btn-md">
+                                        <a href="/patient_detail/{{ patient.id }}/" class="text-white">View Details</a>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+        </section>
+    {% endif %}
+{% endif %}
+</div>
+
+{% endblock %}
+
+

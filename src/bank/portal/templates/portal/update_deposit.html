@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Update Deposit</title>
+    </head>
+    <body>
+        <h1>
+            Update Deposit
+        </h1>
+
+    <a href="{% url 'portal:account_list' %}"><button>All Accounts</button></a>
+
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a type=submit><button>Submit</button></a>
+
+    </form>
+
+
+
+    </body>
+</html>

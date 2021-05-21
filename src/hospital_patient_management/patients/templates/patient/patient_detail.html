@@ -1,0 +1,52 @@
+{% extends 'patient/base.html' %}
+{% load static %}
+
+{% block title%}Patients Details{% endblock title %}
+{% block content %}
+
+    {% if patient %}
+
+        <div class="container-fluid my-5">
+
+            <section class="text-center dark-grey-text mb-5">
+                <div class="card">
+                    <div class="card-body rounded-top border-top p-5">
+                        <h3 class="font-weight-bold my-4">Details of Patient | {{ patient.full_name }}</h3>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-12 mb-4">
+                                    <ul class="" style="list-style: none; text-align: justify;">
+                                        <li class="text-danger"style="font-size: small; text-align: right;"><span class="text-muted">Date of Hospitalized : </span>{{ patient.hospitalized_on }}</li>
+                                        <li class="text-success"><span style="font-size: small;" class="text-muted">Patient Id : </span>{{ patient.id }}</li>
+                                        <li class="text-success"><span style="font-size: small;" class="text-muted">Patient Name : </span>{{ patient.full_name }}</li>
+                                        <li class="text-success"><span style="font-size: small;" class="text-muted">Treatment : </span>{{ patient.treatment }}</li>
+                                        <li class="text-success"><span style="font-size: small;" class="text-muted">Bed Name : </span>{{ patient.bed }}</li>
+                                        <li class="text-success"><span style="font-size: small;" class="text-muted">Bill Amount : </span>{{ patient.bill }}</li>
+                                        <li class="text-success"style="font-size: small;"><span class="text-muted">Extra Info: </span>{{ patient.extra_info }}</li>
+                                        <li class="text-success"style="font-size: small; text-align: right;"><span class="text-muted">Date of Discharged : </span>{{ patient.discharged_on }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-info btn-md">
+                                    <a href="{% url 'patient:edit_patient' patient_id=patient.id %}" class="text-white">Edit Patient Details</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+
+    {% endif %}
+
+
+
+
+
+
+{% endblock %}
+
+

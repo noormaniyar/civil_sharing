@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Outward</title>
+</head>
+<body>
+
+    <h3>Create Outward</h3>
+
+    <form method="post" action="{% url 'materials:outward' %}">
+        {% csrf_token %}
+        Select Material : <select name="material_id">
+            {% for material in materials %}
+                <option value="{{ material.id }}">{{ material.name }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        Enter Weight : <input type="number" name="weight"/>
+        <br><br>
+        <button type="submit">Create</button>
+
+    </form>
+
+</body>
+</html>

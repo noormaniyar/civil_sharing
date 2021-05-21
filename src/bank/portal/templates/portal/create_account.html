@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Create Account</title>
+    </head>
+    <body>
+        <h1>
+            Create Account
+        </h1>
+
+    <a href="{% url 'portal:account_list' %}"><button>All Accounts</button></a>
+
+
+    <form method="post" action="{% url 'portal:create_account' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a type=submit><button>Submit</button></a>
+
+    </form>
+
+
+
+    </body>
+</html>

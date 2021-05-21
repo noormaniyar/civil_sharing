@@ -1,0 +1,47 @@
+{% extends 'patient/base.html' %}
+{% load static %}
+
+{% block title%}Discharge Patient{% endblock title %}
+{% block content %}
+
+<section class="container">
+
+    <h3 class="font-weight-bold my-4 text-center">Discharged Patient List</h3>
+
+    {% if patient_list %}
+
+        <div class="">
+            <section class="d-flex text-center">
+                <table class="table table-bordered table-hover">
+                    <thead class="text-white lead" style="background-color: gray;">
+                        <tr>
+                            <th scope="col">Patient Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Bill Amount</th>
+                            <th scope="col">Date of Discharged</th>
+                        </tr>
+                    </thead>
+                    {% for patient in patient_list %}
+                            <tbody>
+                                <tr>
+                                    <th scope="row">{{ patient.id }}</th>
+                                    <td>{{ patient.full_name }}</td>
+                                    <td>{{ patient.bill }} -Rs.</td>
+                                    <td>{{ patient.discharged_on }}</td>
+                                </tr>
+                            </tbody>
+                    {% endfor %}
+                </table>
+            </section>
+        </div>
+
+    {% endif %}
+
+
+
+</section>
+
+
+{% endblock %}
+
+

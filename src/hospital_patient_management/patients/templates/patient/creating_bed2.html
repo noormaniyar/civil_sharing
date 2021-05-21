@@ -1,0 +1,40 @@
+{% extends 'patient/base.html' %}
+{% load static %}
+
+{% block title%}Create New Bed{% endblock title %}
+{% block content %}
+
+
+<div class="container my-5">
+    <section class="text-center dark-grey-text mb-5">
+        <div class="card">
+            <div class="card-body rounded-top border-top p-5">
+                <h3 class="font-weight-bold my-4">Creating the Bed for patient</h3>
+                <form class="mb-4 mx-md-5" method="post" action="{% url 'patient:creating_bed' %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        Bed Name :
+                        <div class="col-md-12 mb-4">
+                            <input class="form-control" name="bed_name" type="text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        Extra Info :
+                        <div class="col-md-12 mb-4">
+                            <textarea class="form-control" name="extra_info1"></textarea>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-md">Create Bed</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+{% endblock %}
+
+

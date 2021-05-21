@@ -1,0 +1,44 @@
+{% extends 'patient/base.html' %}
+{% load static %}
+
+{% block title%}Edit Patient Details{% endblock title %}
+{% block content %}
+
+<div class="container my-5">
+    <section class="text-center dark-grey-text mb-5">
+        <div class="card">
+            <div class="card-body rounded-top border-top p-5">
+                <h3 class="font-weight-bold my-4">Edit Patient Details | {{ patient.full_name }}</h3>
+                <form class="mb-4 mx-md-5" method="post" action="{% url 'patient:edit_patient' patient_id=patient.id %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        Select Bed :
+                        <div class="col-md-12 mb-4">
+                            <select name="bed_id" class="form-control">
+                                {% for bed in beds %}
+                                    <option value="{{ bed.id }}">{{ bed.bed_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        Extra Info :
+                        <div class="col-md-12 mb-4">
+                            <textarea class="form-control" name="extra_info">{{ patient.extra_info }}</textarea>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-md">Edit Patient Details</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+
+{% endblock %}
+
+
